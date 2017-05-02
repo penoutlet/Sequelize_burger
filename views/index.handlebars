@@ -1,48 +1,85 @@
+
 <img src="http://6pillarsmarketing.com/wp-content/uploads/2014/11/teddys_photoshoot_02.jpg" alt="..." class="img-circle">
 
 
+<div class = 'row'> 
+	<div class = 'col-lg-6'>	
+		<h2> Burgers to Eat </h2>
 
-<h2> Burgers to Eat </h2>
-
-<ul>
-	{{#each burgers}}
-		{{#unless this.devoured}}
-			<li>
-				<p>{{this.id}} {{this.burger_name}} </p>
-					<form  action="/{{this.id}}?_method=PUT" method = "POST">
-					<input type="hidden" name="devoured" value="1">
-					<input type = 'hidden' id = 'burger' name = 'name'>
-					<button type="submit"  id = 'devour-button' class="btn btn-danger">Devour</button>
+			<ul>
+				{{#each burgers}}
+					{{#unless this.devoured}}
+						<div class = 'row'>
+							<div class = 'col-sm-3'>
+			
+								<li> 
+									<p><strong>{{this.id}}.</strong>  <i>{{this.burger_name}}</i>  </p>
+									<form  action="/{{this.id}}?_method=PUT" method = "POST">
+									<input type="hidden" name="devoured" value="1">
+									<input type = 'hidden' id = 'burger' name = 'name'>
+			
+							</div>
+							<div class = 'col-sm-2'>
+			
+								<button type="submit"  id = 'devour-button' class="btn btn-warning">Devour</button>
+			
+					
+									</form>
+							</div>
+							<div class = 'col-sm-2'>
+									<form  action="/{{this.id}}?_method=DELETE" method = "POST">
+									<input type="hidden" name="devoured" value="1">
+									<input type = 'hidden' id = 'burger' name = 'name'>
+									<button type="submit"  id = 'devour-button' class="btn btn-danger">Delete</button>
 
 					
-				</form>
-  				<label for = 'burger'> </label>
+									</form>
+					  				
+					  				<label for = 'burger'> </label>
+							</div>
+								</li>
+						</div>
+								
+					{{/unless}}
+				{{/each}}
+			</ul>
+	</div>
 
-			</li>
-		{{/unless}}
-	{{/each}}
-</ul>
+<div class = "col-lg-6">
+	<h2> Burgers Devoured </h2>
 
-<h2> Burgers Devoured </h2>
+		<ul>
+			{{#each burgers}}
+				{{#if this.devoured}}
+					<div class = 'row' >	
+						<div class = 'col-sm-3'>
+					<li>
 
-<ul>
-	{{#each burgers}}
-		{{#if this.devoured}}
-			<li>
-				{{this.burger_name}}
-					<input type="hidden" name="devoured" value="1"><br>
-  					<label for = 'burger'> 
-  					<input type = 'hidden' id = 'burger' name = 'name'>
-		
-  					 </label>
-  				
+						<strong>{{this.id}}. </strong> <i> {{this.burger_name}} </i>
+							<input type="hidden" name="devoured" value="1"><br>
+		  					<label for = 'burger'> 
+		  					<input type = 'hidden' id = 'burger' name = 'name'>
+						</div>
+						<div class = 'col-sm-3'>
+						<form  action="/{{this.id}}?_method=DELETE" method = "POST">
+							<input type="hidden" name="devoured" value="1">
+							<input type = 'hidden' id = 'burger' name = 'name'>
+							<button type="submit"  id = 'devour-button' class="btn btn-danger">Delete</button>
 
-			</li>
-		{{/if}}
-	{{/each}}
+							
+						</form>
+							</div>
+						</div>
+		  					 </label>
+		  				
 
-</ul>
+					</li>
+				{{/if}}
+			{{/each}}
 
+		</ul>
+	</div>
+</div>
 
 
 
@@ -52,7 +89,7 @@
 
 	<div class = 'form-group'>
 		<label for = 'burger'> Burger name: </label>
-		<input type="text" class="form-control" placeholder="Text input" id = 'burger' name = 'name'>
+		<input type="text" class="form-control" placeholder="Add a burger." id = 'burger' name = 'name'>
 		
 		<input type = 'hidden' id = 'burger' name = 'devoured' value = 0>
 		<button type="submit" class="btn btn-info" id = 'add-button'> Add </button>

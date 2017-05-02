@@ -24,9 +24,9 @@ fs
     db[model.name] = model;
   });
 
-Object.keys(db).forEach(function(Post) {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+Object.keys(db).forEach(function(burger) {
+  if (db[burger].associate) {
+    db[burger].associate(db);
   }
 });
 
