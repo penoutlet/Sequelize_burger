@@ -1,3 +1,4 @@
+// iss02 iss02
 var express = require('express');
 var app = express.Router();
 var db = require('../models');
@@ -14,13 +15,13 @@ app.get('/', function(req,res){
 });
 
 app.post('/', function(req,res){
-	db.burger.create(req.body, {
+	console.log("req.body" + req.body);
 		
-	}).then(function(results){
+	db.burger.create(req.body).then(function(results){
 		console.log(res.json(results));
-		// console.log("req.body" + req.body);
-		res.redirect("/");
+	
 	});
+	res.redirect("/");
 });
 
 app.delete('/:id', function(req,res){
@@ -31,8 +32,9 @@ app.delete('/:id', function(req,res){
 		
 	}).then(function(results){
 		console.log(res.json(results));
-		res.redirect("/");
+		
 	});
+	res.redirect("/");
 });
 
 app.put('/:id', function(req,res){
@@ -44,7 +46,8 @@ app.put('/:id', function(req,res){
 		}
 	}).then(function(results){
 		console.log(res.json(results));
+		});
 		res.redirect("/");
-	});
+
 });
 };
